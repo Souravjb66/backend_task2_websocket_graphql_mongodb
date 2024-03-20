@@ -1,6 +1,6 @@
-package com.chat.app.first.repository;
+package com.websocket.project.secondno.repository;
 
-import com.chat.app.first.model.Message;
+import com.websocket.project.secondno.model.Message;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

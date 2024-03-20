@@ -11,14 +11,11 @@
 <div>
     <label for="user1">User 1:</label>
     <input type="text" id="user1Message" placeholder="message">
-    <button onclick="sendMessage('user1')">Send</button>
+    <label for="user2">User 2:</label>
+    <input type="text" id="user2Message" placeholder="user">
+    <button onclick="sendMessage('user1','user2')">Send</button>
 </div>
 
-<!--<div>-->
-<!--    <label for="user2">User 2:</label>-->
-<!--    <input type="text" id="user2Message" placeholder="message">-->
-<!--    <button onclick="sendMessage('user2')">Send</button>-->
-<!--</div>-->
 
 <div>
     <h2>Received Messages:</h2>
@@ -37,18 +34,18 @@
         stompClient.subscribe('/topic/get', function(message) {        //recive chat
             const msg = JSON.parse(message.body);
 
-            document.getElementById("messages").innerHTML += "<li>"+msg.name+"->  "+ msg.chat + "</li>";
-<!--            document.getElementById("u1").innerHTML += "<li>" + msg.name + "</li>";-->
+            document.getElementById("messages").innerHTML += "<li>"+msg.username+"->  "+ msg.chat + "</li>";
+
 
 
 
         });
     });
 
-    function sendMessage(user) {
+    function sendMessage(user,name) {
         const message = document.getElementById(user + 'Message').value;
 
-        stompClient.send('/app/message', {}, JSON.stringify({ chat: message}));  //send message
+        stompClient.send('/app/message', {}, JSON.stringify({ chat: message,username:name}));  //send message
         document.getElementById(user + 'Message').value = '';
     }
 </script>

@@ -1,7 +1,7 @@
-package com.chat.app.first.service;
+package com.websocket.project.secondno.service;
 
-import com.chat.app.first.model.Message;
-import com.chat.app.first.repository.ChatRepository;
+import com.websocket.project.secondno.model.Message;
+import com.websocket.project.secondno.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +11,14 @@ import java.util.List;
 public class ChatService {
     @Autowired
     private ChatRepository repository;
-    public void SaveChat(Message msg){
+    public void SaveMsg(Message msg){
         repository.insert(msg);
-        System.out.println("stored");
-
+        System.out.println("store");
     }
-    public List<Message>giveUserMsg(String username){
-        return repository.findByUsername(username);
-
+    public List<Message>getUserChat(String user){
+        return repository.findByUsername(user);
+    }
+    public List<Message>getAllMsg(){
+        return repository.findAll();
     }
 }

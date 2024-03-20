@@ -1,32 +1,23 @@
-package com.chat.app.first.controller;
+package com.websocket.project.secondno.controller;
 
-import com.chat.app.first.model.Login;
-import com.chat.app.first.model.Message;
-import com.chat.app.first.model.User;
-import com.chat.app.first.service.ChatService;
-import com.chat.app.first.service.LoginService;
+import com.websocket.project.secondno.model.Message;
+import com.websocket.project.secondno.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class MessageController {
     @Autowired
-    private Login login;
-
-    @Autowired
     private ChatService chatService;
-
     @MessageMapping("/message")
     @SendTo("/topic/get")
     public Message getContent(@RequestBody Message msg){
-        msg.setUsername(login.getUsername());
-        chatService.SaveChat(msg);
+
+        chatService.SaveMsg(msg);
         return msg;                                                      //user1 and user2
     }
 
@@ -34,7 +25,4 @@ public class MessageController {
     public String getMessage(){
         return "index.html";
     }
-
-
-
 }

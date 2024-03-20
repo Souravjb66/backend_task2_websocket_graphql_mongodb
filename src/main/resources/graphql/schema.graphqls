@@ -1,0 +1,10 @@
+type Messages{
+   id:ID!
+   Chat:String
+   Username:String
+}
+type Query{
+   getUserChat(user:String):[String]
+   getAllChat:[String]
+
+}

@@ -1,9 +1,9 @@
-package com.chat.app.first.model;
+package com.websocket.project.secondno.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "chat_store")
+@Document(collection = "open_chat")
 public class Message {
     private String Username;
     private String Chat;
