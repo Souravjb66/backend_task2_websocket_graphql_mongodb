@@ -1,10 +1,12 @@
 package com.websocket.project.secondno.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "open_chat")
 public class Message {
+
     private String Username;
     private String Chat;
     public Message(){}
