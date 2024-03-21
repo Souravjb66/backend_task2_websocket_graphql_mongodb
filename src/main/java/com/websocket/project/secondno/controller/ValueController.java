@@ -13,8 +13,13 @@ import java.util.List;
 
 @Controller
 public class ValueController {
-    @Autowired
+
     private ChatService chatService;
+    public ValueController(){}
+    @Autowired
+    public ValueController(ChatService service){
+        this.chatService=service;
+    }
     @QueryMapping("getUserChat")
     public List<String>getUserChat(@Argument String user){
         var i=chatService.getUserChat(user);

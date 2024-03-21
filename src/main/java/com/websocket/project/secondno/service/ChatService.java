@@ -9,8 +9,14 @@ import java.util.List;
 
 @Service
 public class ChatService {
-    @Autowired
+
     private ChatRepository repository;
+    public ChatService(){}
+    @Autowired
+    public ChatService(ChatRepository repo){
+        this.repository=repo;
+    }
+
     public void SaveMsg(Message msg){
         repository.insert(msg);
         System.out.println("store");
